@@ -1,0 +1,123 @@
+.skills {
+  padding: var(--space-4xl) 0;
+}
+
+.skills__header {
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.skills__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-top: var(--space-sm);
+}
+
+.skills__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-3xl);
+}
+
+.skills__filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 8px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  background: var(--glass);
+  transition: all var(--duration-fast);
+}
+
+.skills__filter-btn:hover {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.skills__filter-btn.active {
+  background: var(--lime);
+  color: var(--deep-plum);
+  border-color: var(--lime);
+  font-weight: 600;
+}
+
+.skills__matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.skills__category-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.skills__category-title {
+  color: var(--white);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: var(--space-sm);
+}
+
+.skills__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-content: flex-start;
+}
+
+.skills__chip {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--duration-fast);
+  cursor: default;
+}
+
+.skills__chip:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.skills__chip--software:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+.skills__chip--engineering:hover {
+  border-color: var(--emerald);
+  color: var(--emerald);
+}
+
+.skills__chip--soft:hover {
+  border-color: var(--engineering-teal);
+  color: var(--engineering-teal);
+}
+
+@media (max-width: 1024px) {
+  .skills__matrix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills__matrix {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills__filters {
+    justify-content: flex-start;
+  }
+}

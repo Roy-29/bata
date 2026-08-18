@@ -1,0 +1,139 @@
+.education {
+  padding: var(--space-4xl) 0;
+}
+
+.education__header {
+  margin-bottom: var(--space-3xl);
+  text-align: center;
+}
+
+.education__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-top: var(--space-sm);
+}
+
+.education__timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: var(--space-xl);
+}
+
+.education__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--glass-border), rgba(255, 255, 255, 0.02));
+}
+
+.education__item {
+  position: relative;
+  margin-bottom: var(--space-3xl);
+}
+
+.education__item:last-child {
+  margin-bottom: 0;
+}
+
+.education__dot {
+  position: absolute;
+  left: calc(var(--space-xl) * -1 - 0.5px);
+  top: 6px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--deep-plum);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.education__dot-inner {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.education__item--current .education__dot {
+  border-color: var(--lime);
+}
+
+.education__item--current .education__dot-inner {
+  background: var(--lime);
+  box-shadow: 0 0 8px rgba(156, 225, 145, 0.8);
+}
+
+.education__item:hover .education__dot {
+  border-color: var(--emerald);
+}
+
+.education__item:hover .education__dot-inner {
+  background: var(--emerald);
+}
+
+.education__content {
+  padding: var(--space-md) var(--space-xl);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.education__item:hover .education__content {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.education__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.education__period {
+  color: var(--muted);
+}
+
+.education__badge {
+  padding: 2px 6px;
+  background: rgba(249, 130, 30, 0.1);
+  border: 1px solid rgba(249, 130, 30, 0.2);
+  border-radius: 2px;
+}
+
+.education__degree {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--space-xs);
+}
+
+.education__institution {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-sm);
+}
+
+.education__gpa {
+  color: var(--emerald);
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .education__content {
+    padding: var(--space-md);
+  }
+}

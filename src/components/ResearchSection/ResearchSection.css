@@ -1,0 +1,123 @@
+.research {
+  padding: var(--space-5xl) 0;
+}
+
+.research__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+}
+
+.research__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: var(--space-md) 0 var(--space-lg);
+}
+
+.research__desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.research__skills {
+  border-left: 2px solid var(--glass-border);
+  padding-left: var(--space-lg);
+}
+
+.research__workflow {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.research__workflow li {
+  font-size: 0.95rem;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.research__workflow li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--lime);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.research__visual {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.research__diagram {
+  width: 100%;
+  height: auto;
+}
+
+.research__mech {
+  transform-origin: 100px 200px;
+  animation: rotate-slow 20s linear infinite;
+}
+
+@keyframes rotate-slow {
+  to { transform: rotate(360deg); }
+}
+
+.research__data circle {
+  animation: pulse-opacity 3s ease-in-out infinite alternate;
+}
+
+.research__data circle:nth-child(even) {
+  animation-delay: -1.5s;
+}
+
+@keyframes pulse-opacity {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.research__particle {
+  offset-path: path("M 100 200 C 100 200, 150 170, 280 120");
+  animation: move-particle 3s linear infinite;
+}
+
+.p2 {
+  offset-path: path("M 100 200 C 100 200, 150 200, 330 220");
+  animation-delay: -1s;
+}
+
+.p3 {
+  offset-path: path("M 100 200 C 100 200, 150 230, 310 320");
+  animation-delay: -2s;
+}
+
+@keyframes move-particle {
+  0% { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .research__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .research__visual {
+    order: -1;
+  }
+}

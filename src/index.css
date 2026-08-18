@@ -1,0 +1,291 @@
+/* ============================================
+   BIPROTIB HALDAR — ENGINEERING PORTFOLIO
+   Design System & Global Styles
+   ============================================ */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+/* --- Design Tokens --- */
+:root {
+  /* Primary Palette */
+  --deep-plum: #16071E;
+  --engineering-teal: #023C48;
+  --emerald: #057253;
+  --lime: #9CE191;
+  --mechanical-orange: #F9821E;
+
+  /* Supporting */
+  --white: #F8FAF9;
+  --muted: #A7B3B0;
+  --dark-surface: #101719;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-hover: rgba(255, 255, 255, 0.10);
+
+  /* Semantic */
+  --bg-primary: var(--deep-plum);
+  --bg-secondary: var(--dark-surface);
+  --text-primary: var(--white);
+  --text-secondary: var(--muted);
+  --accent-primary: var(--lime);
+  --accent-secondary: var(--mechanical-orange);
+  --surface-teal: var(--engineering-teal);
+  --surface-emerald: var(--emerald);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+
+  /* Layout */
+  --container-max: 1320px;
+  --container-padding: 2rem;
+  --nav-height: 72px;
+  --nav-height-compact: 56px;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+
+  /* Z-index */
+  --z-background: -1;
+  --z-content: 1;
+  --z-overlay: 10;
+  --z-nav: 100;
+  --z-modal: 200;
+  --z-cursor: 1000;
+  --z-ignition: 9999;
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--engineering-teal);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--emerald);
+}
+
+/* --- Selection --- */
+::selection {
+  background: var(--mechanical-orange);
+  color: var(--white);
+}
+
+/* --- Typography Utilities --- */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--lime) 0%, var(--emerald) 50%, var(--engineering-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-orange {
+  background: linear-gradient(135deg, var(--mechanical-orange) 0%, #FFB067 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(249, 130, 30, 0.4);
+}
+
+/* --- Layout --- */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+}
+
+.section {
+  padding: var(--space-5xl) 0;
+  position: relative;
+}
+
+/* --- Glass Utility --- */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --- Animation Utilities --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-slower) var(--ease-out),
+              transform var(--duration-slower) var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Technical Label --- */
+.tech-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.tech-label--lime {
+  color: var(--lime);
+}
+
+.tech-label--orange {
+  color: var(--mechanical-orange);
+}
+
+/* --- Focus Styles --- */
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+/* --- Skip Link --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--lime);
+  color: var(--deep-plum);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  z-index: calc(var(--z-ignition) + 1);
+  border-radius: var(--radius-sm);
+  transition: top var(--duration-fast);
+}
+.skip-link:focus {
+  top: var(--space-md);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 1.5rem;
+    --space-5xl: 6rem;
+    --space-4xl: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1.25rem;
+    --space-5xl: 4rem;
+    --space-4xl: 3rem;
+    --nav-height: 64px;
+  }
+}
+
+@media (max-width: 390px) {
+  :root {
+    --container-padding: 1rem;
+    --space-5xl: 3rem;
+  }
+}

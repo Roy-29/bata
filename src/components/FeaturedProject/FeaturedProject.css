@@ -1,0 +1,205 @@
+.featured {
+  background: linear-gradient(180deg, var(--deep-plum) 0%, rgba(2, 60, 72, 0.08) 50%, var(--deep-plum) 100%);
+}
+
+.featured__header {
+  margin-bottom: var(--space-3xl);
+}
+
+.featured__title-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-lg);
+  margin-top: var(--space-sm);
+}
+
+.featured__code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--mechanical-orange);
+  letter-spacing: 0.1em;
+}
+
+.featured__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+
+.featured__date {
+  margin-top: var(--space-sm);
+}
+
+.featured__body {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.featured-project__card {
+  background: var(--dark-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  transition: transform var(--duration-normal) var(--ease-out), border-color var(--duration-normal);
+}
+
+.featured-project__card:hover {
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.featured__visual {
+  background: rgba(2, 60, 72, 0.08);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.featured__visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+
+.featured__diagram {
+  width: 100%;
+  height: auto;
+}
+
+/* Gear rotation animation */
+.featured__gear {
+  transform-origin: center;
+  animation: gear-spin 8s linear infinite;
+}
+
+.featured__gear--reverse {
+  animation: gear-spin-reverse 6s linear infinite;
+}
+
+@keyframes gear-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gear-spin-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+/* Shaft drawing animation */
+.featured__shaft {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: draw-shaft 2s var(--ease-out) 0.5s forwards;
+}
+
+@keyframes draw-shaft {
+  to { stroke-dashoffset: 0; }
+}
+
+.featured__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.featured__desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.featured__workflow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.featured__steps {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.featured__step {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--lime);
+  padding: 6px 14px;
+  border: 1px solid rgba(156, 225, 145, 0.2);
+  border-radius: var(--radius-sm);
+}
+
+.featured__step-arrow {
+  color: var(--muted);
+  margin-right: var(--space-sm);
+  border: none;
+  padding: 0;
+}
+
+.featured__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.featured__tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+}
+
+.featured__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.featured__detail {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.featured__detail-marker {
+  width: 4px;
+  height: 4px;
+  min-width: 4px;
+  border-radius: 1px;
+  background: var(--emerald);
+  margin-top: 8px;
+}
+
+@media (max-width: 1024px) {
+  .featured__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured__title-row {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="100" height="100" rx="20" fill="#16071E" />
+  
+  <!-- Outer Technical Ring (Teal) -->
+  <circle cx="50" cy="50" r="40" stroke="#023C48" stroke-width="4" fill="none" stroke-dasharray="8 4" />
+  
+  <!-- Inner Highlight Ring (Lime) -->
+  <circle cx="50" cy="50" r="34" stroke="#9CE191" stroke-width="2" fill="none" />
+  
+  <!-- Abstract Mechanical Elements -->
+  <path d="M 50 10 L 50 16 M 50 84 L 50 90 M 10 50 L 16 50 M 84 50 L 90 50" stroke="#F9821E" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- BH Text -->
+  <text x="50" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">BH</text>
+  
+  <!-- Tech dot -->
+  <circle cx="68" cy="62" r="3" fill="#9CE191" />
+</svg>
