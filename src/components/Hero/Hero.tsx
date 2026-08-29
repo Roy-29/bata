@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, type Variants, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, type Variants, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import { ArrowDown, Download } from 'lucide-react';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { profile } from '../../data/profile';
@@ -182,10 +182,7 @@ export default function Hero() {
             style={{ 
               rotateX, 
               rotateY,
-              boxShadow: useTransform(
-                [shadowX, shadowY],
-                ([x, y]: [number, number]) => `${x}px ${y}px 40px rgba(0, 0, 0, 0.6)`
-              )
+              boxShadow: useMotionTemplate`${shadowX}px ${shadowY}px 40px rgba(0, 0, 0, 0.6)`
             }}
             whileHover={{ scale: 1.05, cursor: 'pointer' }}
             whileTap={{ scale: 0.98 }}
@@ -199,10 +196,7 @@ export default function Hero() {
               <motion.div 
                 className="hero__3d-glare" 
                 style={{
-                  background: useTransform(
-                    [glareX, glareY],
-                    ([gx, gy]: [string, string]) => `radial-gradient(circle at ${gx} ${gy}, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)`
-                  )
+                  background: useMotionTemplate`radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)`
                 }}
               />
               
