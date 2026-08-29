@@ -36,13 +36,44 @@
   margin-bottom: var(--space-3xl);
 }
 
-.contact__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-md);
+.contact__sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
   width: 100%;
   max-width: 900px;
   margin-bottom: var(--space-4xl);
+}
+
+.contact__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.contact__group-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--lime);
+  margin-bottom: var(--space-xl);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.contact__grid {
+  display: grid;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.contact__grid--direct {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.contact__grid--social {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .contact__link-card {

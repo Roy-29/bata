@@ -23,27 +23,58 @@ export default function ContactSection() {
             For engineering collaboration, projects, research, or professional opportunities.
           </p>
 
-          <div className="contact__grid">
-            {socialLinks.map((link, i) => (
-              <motion.a
-                key={link.id}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact__link-card"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.4, delay: 0.2 + (i * 0.05) }}
-              >
-                <div className="contact__link-icon">
-                  <link.icon size={20} />
-                </div>
-                <div className="contact__link-info">
-                  <span className="contact__link-label tech-label">{link.label}</span>
-                  <span className="contact__link-display">{link.display}</span>
-                </div>
-              </motion.a>
-            ))}
+          <div className="contact__sections">
+            <div className="contact__group">
+              <h3 className="contact__group-title">Direct Connect</h3>
+              <div className="contact__grid contact__grid--direct">
+                {socialLinks.filter(l => ['email', 'phone', 'whatsapp'].includes(l.id)).map((link, i) => (
+                  <motion.a
+                    key={link.id}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact__link-card"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.4, delay: 0.2 + (i * 0.05) }}
+                  >
+                    <div className="contact__link-icon">
+                      <link.icon size={20} />
+                    </div>
+                    <div className="contact__link-info">
+                      <span className="contact__link-label tech-label">{link.label}</span>
+                      <span className="contact__link-display">{link.display}</span>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+
+            <div className="contact__group">
+              <h3 className="contact__group-title">Digital Presence</h3>
+              <div className="contact__grid contact__grid--social">
+                {socialLinks.filter(l => !['email', 'phone', 'whatsapp'].includes(l.id)).map((link, i) => (
+                  <motion.a
+                    key={link.id}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact__link-card"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.4, delay: 0.4 + (i * 0.05) }}
+                  >
+                    <div className="contact__link-icon">
+                      <link.icon size={20} />
+                    </div>
+                    <div className="contact__link-info">
+                      <span className="contact__link-label tech-label">{link.label}</span>
+                      <span className="contact__link-display">{link.display}</span>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
           </div>
 
           <motion.div 

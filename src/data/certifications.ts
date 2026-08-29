@@ -26,8 +26,13 @@ export const certifications: Certification[] = [
     id: 'web-dev',
     title: 'Web Development Fundamentals',
     issuer: 'Ostad',
-    date: '',
+    date: 'Dec 2024',
     category: 'Web Development',
+    modules: [
+      'HTML5, CSS3, & Responsive Design',
+      'JavaScript ES6+ & DOM Manipulation',
+      'React.js Component Architecture'
+    ],
     credentialUrl: '#', // Replace with actual credential URL
   },
 ];

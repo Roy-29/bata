@@ -9,19 +9,19 @@
 /* --- Design Tokens --- */
 :root {
   /* Primary Palette */
-  --deep-plum: #16071E;
-  --engineering-teal: #023C48;
-  --emerald: #057253;
-  --lime: #9CE191;
-  --mechanical-orange: #F9821E;
+  --deep-plum: #0A030F; /* Darker background for higher contrast */
+  --engineering-teal: #005A6F; /* More vibrant teal */
+  --emerald: #00B37E; /* Brighter emerald */
+  --lime: #B5FF6B; /* Neon lime for maximum pop */
+  --mechanical-orange: #FF5A1F; /* Punchier orange */
 
   /* Supporting */
-  --white: #F8FAF9;
-  --muted: #A7B3B0;
-  --dark-surface: #101719;
-  --glass: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-hover: rgba(255, 255, 255, 0.10);
+  --white: #FFFFFF; /* Pure white for higher contrast */
+  --muted: #C2D1CC; /* Lighter muted text */
+  --dark-surface: #141C1E; /* Slightly more distinct surface */
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-hover: rgba(255, 255, 255, 0.12);
 
   /* Semantic */
   --bg-primary: var(--deep-plum);
@@ -99,6 +99,11 @@ body {
   font-weight: 400;
   color: var(--text-primary);
   background-color: var(--bg-primary);
+  background-image: 
+    linear-gradient(rgba(156, 225, 145, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156, 225, 145, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
@@ -160,6 +165,7 @@ ul, ol {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 30px rgba(181, 255, 107, 0.3);
 }
 
 .text-gradient-orange {
@@ -167,7 +173,7 @@ ul, ol {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 20px rgba(249, 130, 30, 0.4);
+  text-shadow: 0 0 30px rgba(255, 90, 31, 0.4);
 }
 
 /* --- Layout --- */

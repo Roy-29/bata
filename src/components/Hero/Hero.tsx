@@ -1,4 +1,5 @@
-import { motion, type Variants, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion, type Variants, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowDown, Download } from 'lucide-react';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { profile } from '../../data/profile';
@@ -20,6 +21,36 @@ export default function Hero() {
   const { scrollY } = useScroll();
   const bgY = useTransform(scrollY, [0, 1000], [0, 300]);
   const opacity = useTransform(scrollY, [0, 800], [1, 0]);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const mouseXSpring = useSpring(x, { stiffness: 100, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 100, damping: 20 });
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["25deg", "-25deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-25deg", "25deg"]);
+  
+  // Dynamic shadows and glare
+  const shadowX = useTransform(mouseXSpring, [-0.5, 0.5], [30, -30]);
+  const shadowY = useTransform(mouseYSpring, [-0.5, 0.5], [30, -30]);
+  const glareX = useTransform(mouseXSpring, [-0.5, 0.5], ["100%", "0%"]);
+  const glareY = useTransform(mouseYSpring, [-0.5, 0.5], ["100%", "0%"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    x.set(mouseX / width - 0.5);
+    y.set(mouseY / height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+
 
   return (
     <section className="hero" id="hero" aria-label="Hero section">
@@ -64,6 +95,16 @@ export default function Hero() {
             <line x1="1050" y1="400" x2="1050" y2="600" stroke="rgba(2,60,72,0.2)" strokeWidth="1.5" />
             <rect x="1035" y="450" width="30" height="10" rx="1" stroke="rgba(2,60,72,0.15)" strokeWidth="0.5" fill="none" />
             <rect x="1035" y="530" width="30" height="10" rx="1" stroke="rgba(2,60,72,0.15)" strokeWidth="0.5" fill="none" />
+          </g>
+
+          {/* Protractor / Angle Measurement */}
+          <g className="hero__anim-rotate-slow" style={{ transformOrigin: '200px 300px' }}>
+            <path d="M 150 300 A 50 50 0 0 1 250 300" stroke="rgba(5,114,83,0.15)" strokeWidth="0.5" fill="none" />
+            <line x1="150" y1="300" x2="250" y2="300" stroke="rgba(5,114,83,0.15)" strokeWidth="0.5" />
+            {/* Tick marks */}
+            {Array.from({ length: 7 }).map((_, i) => (
+              <line key={`tick${i}`} x1="200" y1="300" x2={200 + 50 * Math.cos(Math.PI * (i / 6))} y2={300 - 50 * Math.sin(Math.PI * (i / 6))} stroke="rgba(5,114,83,0.1)" strokeWidth="0.5" />
+            ))}
           </g>
           
           {/* Torque arrow */}
@@ -123,35 +164,56 @@ export default function Hero() {
               <FaLinkedinIn size={18} />
             </a>
           </motion.div>
+
+          {/* Status indicator */}
+          {profile.availableForOpportunities && (
+            <motion.div className="hero__status" variants={itemVariants}>
+              <span className="hero__status-dot" />
+              <span className="hero__status-text tech-label">{profile.statusText}</span>
+            </motion.div>
+          )}
         </div>
 
-        <div className="hero__content-right">
-          <motion.div className="hero__image-container" variants={itemVariants}>
-            <div className="hero__image-wrapper">
-              <img src={profile.profileImageUrl} alt={profile.name} className="hero__image" />
-              <div className="hero__image-overlay"></div>
-              <div className="hero__image-frame">
-                <span className="frame-corner top-left"></span>
-                <span className="frame-corner top-right"></span>
-                <span className="frame-corner bottom-left"></span>
-                <span className="frame-corner bottom-right"></span>
-              </div>
+        <motion.div className="hero__content-right" variants={itemVariants} style={{ perspective: 1200 }}>
+          <motion.div 
+            className="hero__3d-photo-wrapper"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ 
+              rotateX, 
+              rotateY,
+              boxShadow: useTransform(
+                [shadowX, shadowY],
+                ([x, y]: [number, number]) => `${x}px ${y}px 40px rgba(0, 0, 0, 0.6)`
+              )
+            }}
+            whileHover={{ scale: 1.05, cursor: 'pointer' }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          >
+            {/* The 3D Photo Content */}
+            <div className="hero__3d-photo-inner">
+              <img src="/hero_car.png" alt="Engineering 3D Model" className="hero__3d-photo-image" />
+              
+              {/* Dynamic Glare Overlay */}
+              <motion.div 
+                className="hero__3d-glare" 
+                style={{
+                  background: useTransform(
+                    [glareX, glareY],
+                    ([gx, gy]: [string, string]) => `radial-gradient(circle at ${gx} ${gy}, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)`
+                  )
+                }}
+              />
+              
+              {/* Cyberpunk Scanline Overlay */}
+              <div className="hero__3d-scanlines" />
             </div>
+            
+            {/* Mechanical Frame / Border */}
+            <div className="hero__3d-frame" />
           </motion.div>
-
-          {/* Signature */}
-          <motion.div className="hero__signature-wrapper" variants={itemVariants}>
-            <img src="/sign.jpeg" alt="Biprotib Haldar Signature" className="hero__signature" />
-          </motion.div>
-        </div>
-
-        {/* Status indicator */}
-        {profile.availableForOpportunities && (
-          <motion.div className="hero__status" variants={itemVariants}>
-            <span className="hero__status-dot" />
-            <span className="hero__status-text tech-label">{profile.statusText}</span>
-          </motion.div>
-        )}
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div

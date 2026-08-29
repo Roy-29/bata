@@ -42,35 +42,177 @@
   max-width: 600px;
 }
 
-.brand__accent {
-  width: 120px;
-  opacity: 0.8;
-}
-
-.brand__accent svg {
+.brand__visual {
   width: 100%;
-  height: auto;
+  max-width: 400px;
+  justify-self: end;
+  perspective: 1000px;
 }
 
-@media (max-width: 768px) {
+.brand__visual-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: rotateY(-5deg) rotateX(5deg);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.brand__visual-card:hover {
+  transform: rotateY(0deg) rotateX(0deg) translateY(-5px);
+}
+
+.brand__visual-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.brand__visual-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mechanical-orange);
+  box-shadow: 0 0 10px var(--mechanical-orange);
+  animation: pulse-glow 2s infinite alternate;
+}
+
+.brand__visual-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.brand__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand__stat-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.brand__stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.brand__game-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--glass-border);
+}
+
+.brand__game-instruction {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.brand__slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.brand__slider-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand__slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.brand__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.brand__slider:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.brand__game-reward {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--lime);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.brand__reward-text {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--white);
+  line-height: 1.5;
+}
+
+.brand__reward-reset {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--lime);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  padding: var(--space-xs) 0;
+  transition: all 0.2s ease;
+}
+
+.brand__reward-reset:hover {
+  color: var(--white);
+  text-shadow: 0 0 8px var(--lime);
+}
+
+.brand__visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
   .brand__inner {
     grid-template-columns: 1fr;
+    gap: var(--space-4xl);
   }
 
-  .brand__content {
-    flex-direction: column-reverse;
-    gap: var(--space-2xl);
-    align-items: flex-start;
-  }
-
-  .brand__image-container {
-    flex: none;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .brand__accent {
-    display: none;
+  .brand__visual {
+    justify-self: center;
+    max-width: 100%;
   }
 }
